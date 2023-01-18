@@ -1,55 +1,51 @@
-import { useState } from "react";
-import Header from "../components/Header";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios"
+import Card from "../components/Card";
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  gap: 5px;
-`;
 function HomePage() {
-  const [form, setForm] = useState({ email: "", senha: "" });
 
-  const onChange = (event) => {
-    const { name, value } = event.target;
-    setForm({ ...form, [name]: value });
-  };
+  const [trips, setTrips] = useState([])
 
-  const submitForm = (event) => {
-    event.preventDefault();
-    console.log(form);
-  };
+  const getTrips = () => {
+
+    const aluno = 'darvas'//coloque aqui o nome que você criou no começo da aula
+    axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
+      .then((res) => {
+        setTrips(res.data.trips)
+      })
+      .catch((err) => { 
+        console.log(err);
+      })
+  }
+  useEffect(() => {
+    getTrips()
+  }, [])
+
+  const allTrips = trips && trips.map((trip) => {
+    return (
+      <Card
+        key={trip.id}
+        trip={trip}
+      />
+    )
+  })
   return (
-    <main>
-      <Header />
-      <h1>Página Inicial</h1>
-      <Form onSubmit={submitForm}>
-        <label htmlFor="email">Login</label>
-        <input
-          id="email"
-          name="email"
-          type="text"
-          input="form.email"
-          onChange={onChange}
-          placeholder="email"
-          required
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-        />
-        <label htmlFor="senha">Senha</label>
-        <input
-          id="senha"
-          name="senha"
-          type="password"
-          input="form.senha"
-          onChange={onChange}
-          placeholder="senha"
-          required
-        />
-        <button>Login</button>
-      </Form>
-    </main>
+    <TripsContainer>
+      {allTrips}
+    </TripsContainer>
   );
 }
 
 export default HomePage;
+
+
+const TripsContainer = styled.main`
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ background-image:url('https://img.freepik.com/fotos-premium/fundo-do-espaco-caotico-planetas-estrelas-e-galaxias-no-espaco-sideral-mostrando-a-beleza-da-exploracao-espacial_372999-412.jpg?w=2000');
+ background-repeat: no-repeat;
+ background-size:cover;
+ min-height:90vh;
+`
