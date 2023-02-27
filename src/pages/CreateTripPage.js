@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Header from "../components/Header";
-import styled from "styled-components";
 import axios from "axios"
 import { navigateToAdmin } from "../routes/coordinator";
 import { useNavigate } from "react-router-dom";
+import { Form, FormContainer, Input, LoginButton } from "./styleCreateTripPage";
 
 function CreateTripPage() {
     const [form, setForm] = useState({ nome: "", planeta: "", data:"", descricao:"", duracao:"" });
@@ -77,7 +76,7 @@ function CreateTripPage() {
                     value={form.descricao}
                     onChange={onChange}
                     placeholder="Descrição da viagem: ao menos 30 caracteres"
-                    pattern="/^([A-Za-z]\s?){30,300}$/g"
+                    pattern="/^([A-Za-z]\s?){30,}$\g"
                     required
                 />
                 <label htmlFor="duracao">Duração</label>
@@ -97,27 +96,3 @@ function CreateTripPage() {
 }
 
 export default CreateTripPage;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 30vw;
-  gap: 5px;
-`;
-const FormContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-  
-`;
-const Input = styled.input`
- padding:15px;
-
-`;
-const LoginButton = styled.button`
- padding:15px;
- background-color: blueviolet;
- border: none;
- color:white;
-
-`;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import { Form, FormContainer, Input, LoginButton } from "./styleLoginPage";
 
 
 function LoginPage() {
@@ -49,26 +49,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 30vw;
-  gap: 5px;
-`;
-const FormContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-  
-`;
-const Input = styled.input`
- padding:15px;
-
-`;
-const LoginButton = styled.button`
- padding:15px;
- background-color: blueviolet;
- border: none;
-
-`;
