@@ -1,10 +1,10 @@
 
-import { useState } from "react";
 import { useParams } from "react-router-dom";
+import useRequestData from "../hooks/useRequestData";
 import { AdminContainer, BoxDetail } from './styleAdminPage'
 function AdminPage() {
 
-  const [tripDetail, setTripDetail] = useState({})//use este estado para guardar as informações da requisição.
+  const [tripDetail] = useRequestData()//use este hook para receber as informações da requisição.
   const { id } = useParams();//use este hook do houter para conseguir fazer a requisição através do id
 
 
