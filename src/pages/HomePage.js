@@ -8,8 +8,6 @@ function HomePage() {
 
   const [viagens] = useRequestData([], "/trips")
 
-
-
   const mostraViagens = viagens && viagens.map((trip) => {
     return (
       <Card
@@ -18,6 +16,7 @@ function HomePage() {
       />
     )
   })
+
   return (
     <TripsContainer>
       {mostraViagens}
