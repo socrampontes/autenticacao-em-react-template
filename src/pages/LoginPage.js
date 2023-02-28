@@ -1,21 +1,17 @@
 import { useState } from "react";
-import styled from "styled-components";
+import useForm from "../hooks/useForm";
+import { Form, FormContainer, Input, LoginButton } from "./styleLoginPage";
 
 
 function LoginPage() {
     
-    const [form, setForm] = useState({ email: "", senha: "" });
-
-    const onChange = (event) => {
-        const { name, value } = event.target;
-        setForm({ ...form, [name]: value });
-    };
+    const {form, onChange} = useForm({email:"", senha:""})
 
     const submitForm = (event) => {
         event.preventDefault();
         console.log(form);
-       
     };
+    
     return (
         <FormContainer>
 
@@ -49,26 +45,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 30vw;
-  gap: 5px;
-`;
-const FormContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-  
-`;
-const Input = styled.input`
- padding:15px;
-
-`;
-const LoginButton = styled.button`
- padding:15px;
- background-color: blueviolet;
- border: none;
-
-`;
