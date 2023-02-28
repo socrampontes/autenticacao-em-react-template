@@ -5,36 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { Form, FormContainer, Input, LoginButton } from "./styleCreateTripPage";
 
 function CreateTripPage() {
-    const [form, setForm] = useState({ nome: "", planeta: "", data:"", descricao:"", duracao:"" });
-
-    const onChange = (event) => {
-        const { name, value } = event.target;
-        setForm({ ...form, [name]: value });
-    };
-
-    const navigate = useNavigate()//hook do react-router-dom que faz a navegação entre páginas 
-    const login = () => {
-        //pega as informações dos inputs controlados e envia para a API
-        const body = {
-            email: form.email,
-            password: form.senha
-        }
-        axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/fernanda-dumont/login', body)
-            .then((res) => {
-                console.log(res.data.token);
-                localStorage.setItem("token", res.data.token)//envia o tokem para o localStorage
-                navigateToAdmin(navigate)// função que usa o navigate para levar o usuário diretamente para a página do admin
-
-            })
-            .catch((err) => {
-                console.log(err.message);
-            })
-    }
 
     const submitForm = (event) => {
         event.preventDefault();
-        console.log(form);
-        login()
     };
     return (
         <FormContainer>
@@ -44,37 +17,25 @@ function CreateTripPage() {
                 <label htmlFor="nome">Nome</label>
                 <Input
                     id="nome"
-                    name="nome"
-                    value={form.nome}
-                    onChange={onChange}
                     placeholder="Nome da Viagem"
                     required
                 />
                 <label htmlFor="planeta">Planeta</label>
                 <Input
                     id="planeta"
-                    name="planeta"
-                    value={form.planeta}
-                    onChange={onChange}
                     placeholder="Planeta"
                     required
                 />
                 <label htmlFor="data">Data</label>
                 <Input
                     id="data"
-                    name="data"
                     type='date'
-                    value={form.data}
-                    onChange={onChange}
                     placeholder="data"
                     required
                 />
                 <label htmlFor="descricao">Descricao</label>
                 <Input
                     id="descricao"
-                    name="descricao"
-                    value={form.descricao}
-                    onChange={onChange}
                     placeholder="Descrição da viagem: ao menos 30 caracteres"
                     pattern="/^([A-Za-z]\s?){30,}$\g"
                     required
@@ -82,10 +43,7 @@ function CreateTripPage() {
                 <label htmlFor="duracao">Duração</label>
                 <Input
                     id="duracao"
-                    name="duracao"
                     type="number"
-                    value={form.duracao}
-                    onChange={onChange}
                     placeholder="Duração da viagem em dias"
                     required
                 />
