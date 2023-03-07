@@ -1,21 +1,28 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { BASE_URL } from '../constants/BASE_URL'
+import axios from 'axios'
+
+
 
 export default function useRequestData(estadoInicial, path) {
-    const [dados, setDados] = useState(estadoInicial)
-    const recebeDados = () => {
 
-        const aluno = 'darvas'//coloque aqui o nome que você criou no começo da aula
-        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}${path}`)
-          .then((res) => {
-            setDados(res.data.trips)
-          })
-          .catch((err) => { 
-            console.log(err.response);
-          })
-      }
-      useEffect(() => {
-        recebeDados()
-      }, [])
-  return [dados]
+    const [dados, setDados] = useState(estadoInicial)
+    const [erro, setErro] = useState('')
+
+    const receberDados = () =>{
+        axios.get(`${BASE_URL}${path}`)
+        .then((resposta) => {
+            setDados(resposta.data)
+        })
+        .catch((erro) => {
+            console.log(erro.response)
+            setErro(erro.response)
+        })
+    }
+    
+    useEffect(() => {
+        receberDados()
+    }, [path])
+
+    return [dados, receberDados, erro]
 }
