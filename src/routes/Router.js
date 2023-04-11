@@ -1,25 +1,23 @@
-import { Routes, Route } from "react-router-dom";
-import AdminPage from "../pages/AdminPage";
-import CreateTripPage from "../pages/CreateTripPage";
-import ErrorPage from "../pages/ErrorPage";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Header from '../components/Header.js/Header'
+import DetalhesPost from '../pages/DetalhesPost/DetalhesPost'
+import Feed from '../pages/Feed/Feed'
+import Home from '../pages/Home/Home'
+import Login from '../pages/Login/Login'
+import Signup from '../pages/Signup/Signup'
 
-
-function Router() {
-  return (
-    // <BrowserRouter>
-    
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path={"/login"} element={<LoginPage />} />
-        <Route path={"/create"} element={<CreateTripPage/>} />
-        <Route path={"*"} element={<ErrorPage />} />
-        <Route path={"/admin/:id"} element={<AdminPage />} />
-       
-      </Routes>
-    // </BrowserRouter>
-  );
+export default function Router() {
+    return (
+        <BrowserRouter>
+        <Header />
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/cadastro" element={<Signup />} />
+                <Route path="/feed" element={<Feed />} />
+                <Route path="/post/:id" element={<DetalhesPost />} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
-
-export default Router;
