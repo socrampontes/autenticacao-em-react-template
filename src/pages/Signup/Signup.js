@@ -28,7 +28,9 @@ export default function Signup() {
                 <Input
                     id='nome'
                     name='nomeUsuario'
+
                     pattern='[a-zA-Z\u00C0-\u00FF ]{3,}'
+
                     title='Nome de usuário deve ter no mínimo 3 caracteres. Podendo conter letras, acentos e espaço'
                     value={form.nomeUsuario}
                     onChange={onChange}

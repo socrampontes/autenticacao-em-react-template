@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { irParaFeed, irParaHome, irParaLogin } from '../../Routes/coordinator'
@@ -18,4 +19,5 @@ export default function Header() {
             <button onClick={() => irParaLogin(navigate)}>Login</button>
         </Cabecalho>
     )
+
 }

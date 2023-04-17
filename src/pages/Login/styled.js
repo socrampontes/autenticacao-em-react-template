@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerLogin = styled.main`
+
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -27,3 +28,4 @@ export const ContainerForm = styled.form`
 export const Input = styled.input`
     margin-bottom: 32px;
 `
+
