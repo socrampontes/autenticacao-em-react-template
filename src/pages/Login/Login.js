@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import useForms from '../../hooks/useForms'
-import { irParaCadastro } from '../../Routes/coordinator'
+
 import { ContainerForm, ContainerLogin, Input } from './styled'
+import { irParaCadastro } from '../../routes/coordinator'
 
 export default function Login() {
   const navigate = useNavigate()

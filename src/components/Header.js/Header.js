@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { irParaFeed, irParaHome, irParaLogin } from '../../Routes/coordinator'
+import { irParaFeed, irParaHome, irParaLogin } from '../../routes/coordinator'
 import { Cabecalho, Titulo } from './styled'
 
 export default function Header() {

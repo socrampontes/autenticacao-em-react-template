@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { irParaCadastro, irParaLogin } from '../../Routes/coordinator'
+import { irParaCadastro, irParaLogin } from '../../routes/coordinator'
 
 export default function Home() {
   const navigate = useNavigate()
