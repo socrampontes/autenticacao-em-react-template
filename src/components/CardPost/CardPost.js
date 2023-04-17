@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { irParaPost } from '../../Routes/coordinator'
+import { irParaPost } from '../../routes/coordinator'
 import { Card } from './styled'
 
 export default function CardPost({ post }) {
